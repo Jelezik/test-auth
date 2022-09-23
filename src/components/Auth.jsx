@@ -8,15 +8,12 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [response, setResponse] = useState('');
 
-  const strLogin = String(login);
-  const strPassword = String(password);
-
   function postUser(e) {
     e.preventDefault();
 
-    axios.post('http://neurodoc.online/api/api/authenticate', {
-      "username": strLogin,
-      "password": strPassword
+    axios.post(`http://neurodoc.online/api/api/${process.env.REACT_APP_API_KEY}`, {
+      "username": login,
+      "password": password
     })
       .then(response => {
         console.log(response);
